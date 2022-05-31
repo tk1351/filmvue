@@ -1,7 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="title">FilmVue</div>
+  <main class="main">bbb</main>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.main {
+  width: 100vw;
+  height: 100vh;
+  background-color: $sub-color;
+}
+</style>

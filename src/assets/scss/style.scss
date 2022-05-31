@@ -1,2 +1,6 @@
-@use "reset";
-@use "variables";
+@forward "reset";
+@forward "variables";
+
+* {
+  color: #ffffff;
+}
