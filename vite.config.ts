@@ -6,11 +6,18 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    open: true
+    open: true,
   },
   test: {
     globals: true,
     environment: 'happy-dom',
-    watch: false
+    watch: false,
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/scss/_variables.scss";`,
+      },
+    },
   },
 })
