@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`Testing TextLink Component > TextLinkコンポーネントが正しく表示されていること 1`] = `
+<a
+  class="text-link -primary"
+  data-v-8475e6b2=""
+  href="href"
+>
+  title
+</a>
+`;

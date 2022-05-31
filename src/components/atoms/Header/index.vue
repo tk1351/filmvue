@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TextLink from '../TextLink/index.vue'
+
 const links = [
   { title: 'AAA', href: '#' },
   { title: 'BBB', href: '#' },
@@ -12,7 +14,7 @@ const links = [
     <nav>
       <ul class="header__list">
         <li v-for="link in links" :key="link.title">
-          <a :href="link.href">{{ link.title }}</a>
+          <TextLink :href="link.href" :title="link.title" color="secondary" />
         </li>
       </ul>
     </nav>
