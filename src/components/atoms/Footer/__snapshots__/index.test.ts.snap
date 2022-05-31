@@ -1,0 +1,35 @@
+// Vitest Snapshot v1
+
+exports[`Testing Footer Component > 正しくFooterコンポーネントが表示されていること 1`] = `
+<footer
+  class="footer"
+  data-v-e521488a=""
+>
+  <strong
+    data-v-e521488a=""
+  >
+    SNS
+  </strong>
+  <ul
+    class="footer__list"
+    data-v-e521488a=""
+  >
+    <li
+      data-v-e521488a=""
+    >
+      Twitter
+    </li>
+    <li
+      data-v-e521488a=""
+    >
+      Filmarks
+    </li>
+  </ul>
+  <small
+    class="footer__owner"
+    data-v-e521488a=""
+  >
+    tk33220
+  </small>
+</footer>
+`;
