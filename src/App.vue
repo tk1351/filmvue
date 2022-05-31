@@ -5,14 +5,14 @@ import Footer from './components/atoms/Footer/index.vue'
 
 <template>
   <Header />
-  <main class="main">bbb</main>
+  <main class="main-content">bbb</main>
   <Footer />
 </template>
 
 <style lang="scss">
-.main {
+.main-content {
   width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 70px - 160px);
   background-color: $sub-color;
 }
 </style>
