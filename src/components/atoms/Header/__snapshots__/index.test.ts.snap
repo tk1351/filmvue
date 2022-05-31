@@ -1,0 +1,55 @@
+// Vitest Snapshot v1
+
+exports[`Testing Header Component > 正しくHeaderコンポーネントが表示されていること 1`] = `
+<header
+  class="header"
+  data-v-e8a0fba6=""
+>
+  <h1
+    data-v-e8a0fba6=""
+  >
+    FilmVue
+  </h1>
+  <nav
+    data-v-e8a0fba6=""
+  >
+    <ul
+      class="header__list"
+      data-v-e8a0fba6=""
+    >
+      
+      <li
+        data-v-e8a0fba6=""
+      >
+        <a
+          data-v-e8a0fba6=""
+          href="#"
+        >
+          AAA
+        </a>
+      </li>
+      <li
+        data-v-e8a0fba6=""
+      >
+        <a
+          data-v-e8a0fba6=""
+          href="#"
+        >
+          BBB
+        </a>
+      </li>
+      <li
+        data-v-e8a0fba6=""
+      >
+        <a
+          data-v-e8a0fba6=""
+          href="#"
+        >
+          CCC
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+`;

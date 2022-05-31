@@ -1,6 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Header from './components/atoms/Header/index.vue'
+</script>
 
 <template>
+  <Header />
   <main class="main">bbb</main>
 </template>
 
