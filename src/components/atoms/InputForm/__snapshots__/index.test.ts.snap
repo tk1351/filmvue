@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Testing InputForm Component > InputFormコンポーネントが正しく表示されること 1`] = `
+<input
+  class="input-form"
+  data-v-4617d264=""
+  placeholder="search..."
+  type="text"
+/>
+`;
