@@ -27,7 +27,11 @@ const handleLinkClick = (event: Event) => {
   <section class="movie-card">
     <header>
       <a data-test-id="img-link" @click="handleLinkClick">
-        <img class="movie-card__img" :alt="original_title" :src="poster_path" />
+        <img
+          class="movie-card__img"
+          :alt="original_title"
+          :src="`https://image.tmdb.org/t/p/original${poster_path}`"
+        />
       </a>
     </header>
     <div class="movie-card__content">
@@ -44,7 +48,7 @@ const handleLinkClick = (event: Event) => {
 <style scoped lang="scss">
 .movie-card {
   width: 300px;
-  height: 350px;
+  height: 450px;
   border: 1px solid $main-color;
   border-radius: 30px;
   display: flex;
@@ -53,7 +57,7 @@ const handleLinkClick = (event: Event) => {
 
 .movie-card__img {
   width: 100%;
-  height: 220px;
+  height: 320px;
   border-radius: 30px 30px 0 0;
 
   &:hover {
