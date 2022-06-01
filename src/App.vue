@@ -5,7 +5,7 @@ import Footer from './components/atoms/Footer/index.vue'
 
 <template>
   <Header />
-  <main class="main-content">bbb</main>
+  <main class="main-content"></main>
   <Footer />
 </template>
 

@@ -1,0 +1,42 @@
+// Vitest Snapshot v1
+
+exports[`Testing MovieCard Component > 正しくMovieCardコンポーネントが表示されていること 1`] = `
+<section
+  class="movie-card"
+  data-v-61cece96=""
+>
+  <header
+    data-v-61cece96=""
+  >
+    <a
+      data-test-id="img-link"
+      data-v-61cece96=""
+    >
+      <img
+        alt=""
+        class="movie-card__img"
+        data-v-61cece96=""
+        src=""
+      />
+    </a>
+  </header>
+  <div
+    class="movie-card__content"
+    data-v-61cece96=""
+  >
+    <h3
+      class="movie-card__title"
+      data-v-61cece96=""
+    >
+      <a
+        data-test-id="title-link"
+        data-v-61cece96=""
+      />
+    </h3>
+    <p
+      class="movie-card__date"
+      data-v-61cece96=""
+    />
+  </div>
+</section>
+`;
