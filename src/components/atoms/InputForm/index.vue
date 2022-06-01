@@ -46,6 +46,7 @@ const computedValue = computed({
   width: v-bind(width);
   height: 40px;
   padding: 0 20px;
+  border-radius: 10px;
   color: $main-color;
 
   &::placeholder {

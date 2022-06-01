@@ -58,6 +58,7 @@ const handleLinkClick = (event: Event) => {
 
   &:hover {
     opacity: 0.8;
+    cursor: pointer;
   }
 }
 
@@ -77,6 +78,7 @@ const handleLinkClick = (event: Event) => {
 
   &:hover {
     opacity: 0.8;
+    cursor: pointer;
   }
 }
 </style>
