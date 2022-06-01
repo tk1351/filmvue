@@ -97,6 +97,77 @@ type ClearMovieResponse = AddMovieResponse
 
 type DeleteMovieResponse = AddMovieResponse
 
+type CastType = {
+  adult: boolean
+  gender: number | null
+  id: number
+  known_for_department: string
+  name: string
+  original_name: string
+  popularity: number
+  profile_path: string | null
+  cast_id: number
+  character: string
+  credit_id: string
+  order: number
+}
+
+type CrewType = {
+  adult: boolean
+  gender: number | null
+  id: number
+  known_for_department: string
+  name: string
+  original_name: string
+  popularity: number
+  profile_path: string | null
+  credit_id: string
+  department: string
+  job: string
+}
+
+type MovieCredits = {
+  id: number
+  cast: CastType[]
+  crew: CrewType[]
+}
+
+type PersonDetails = {
+  birthday: string | null
+  known_for_department: string
+  deathday: null | string
+  id: number
+  name: string
+  also_known_as: string[]
+  gender: number
+  biography: string
+  popularity: number
+  place_of_birth: string | null
+  profile_path: string | null
+  adult: boolean
+  imdb_id: string
+  homepage: null | string
+}
+
+type ProviderDetails = {
+  display_priority: number
+  logo_path: string
+  provider_id: number
+  provider_name: string
+}
+
+type WatchProviders = {
+  id: number
+  results: {
+    JP: {
+      link: string
+      rent: ProviderDetails[]
+      flatrate: ProviderDetails[]
+      buy: ProviderDetails[]
+    }
+  }
+}
+
 export type NowPlayingType = BaseType<MovieResult>
 export type SimilarMoviesType = Omit<BaseType<MovieResult>, 'dates'>
 export type MovieDetailsType = MovieDetails
@@ -110,3 +181,6 @@ export type RemoveMovieBodyType = RemoveMovieBody
 export type RemoveMovieResponseType = RemoveMovieResponse
 export type ClearMovieResponseType = ClearMovieResponse
 export type DeleteMovieResponseType = DeleteMovieResponse
+export type MovieCreditsType = MovieCredits
+export type PersonDetailsType = PersonDetails
+export type WatchProvidersType = WatchProviders
