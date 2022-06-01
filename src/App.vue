@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import Header from './components/atoms/Header/index.vue'
 import Footer from './components/atoms/Footer/index.vue'
-import PersonCard from './components/atoms/PersonCard/index.vue'
 </script>
 
 <template>
   <Header />
-  <main class="main-content"><PersonCard /></main>
+  <Suspense>
+    <main class="main-content">
+      <router-view></router-view>
+    </main>
+  </Suspense>
   <Footer />
 </template>
 
