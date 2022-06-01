@@ -1,0 +1,39 @@
+// Vitest Snapshot v1
+
+exports[`Testing PersonCard Component > PersonCardコンポーネントが正しく表示されること 1`] = `
+<section
+  class="person-card"
+  data-v-1bfbd1b6=""
+>
+  <header
+    data-v-1bfbd1b6=""
+  >
+    <a
+      data-test-id="img-link"
+      data-v-1bfbd1b6=""
+    >
+      <img
+        alt=""
+        class="person-card__img"
+        data-v-1bfbd1b6=""
+        src=""
+      />
+    </a>
+  </header>
+  <div
+    class="person-card__content"
+    data-v-1bfbd1b6=""
+  >
+    <h3
+      class="person-card__name"
+      data-v-1bfbd1b6=""
+    >
+      <a
+        data-test-id="name-link"
+        data-v-1bfbd1b6=""
+      />
+    </h3>
+    <!--v-if-->
+  </div>
+</section>
+`;
