@@ -7,4 +7,12 @@ describe('Testing Header Component', () => {
     const wrapper = mount(Header)
     expect(wrapper.element).toMatchSnapshot()
   })
+
+  describe('Event', () => {
+    it('Titleをクリックすると、 click:titleLink イベントが1回実行されること', async () => {
+      const wrapper = mount(Header)
+      await wrapper.find('[data-test-id="title-link"]').trigger('click')
+      expect(wrapper.emitted('click:titleLink')).toHaveLength(1)
+    })
+  })
 })

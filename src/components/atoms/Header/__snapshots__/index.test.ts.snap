@@ -6,9 +6,15 @@ exports[`Testing Header Component > 正しくHeaderコンポーネントが表�
   data-v-e8a0fba6=""
 >
   <h1
+    class="header__title"
     data-v-e8a0fba6=""
   >
-    FilmVue
+    <a
+      data-test-id="title-link"
+      data-v-e8a0fba6=""
+    >
+       FilmVue 
+    </a>
   </h1>
   <nav
     data-v-e8a0fba6=""
@@ -22,6 +28,8 @@ exports[`Testing Header Component > 正しくHeaderコンポーネントが表�
         data-v-e8a0fba6=""
       >
         <a
+          class="text-link -secondary"
+          data-v-8475e6b2=""
           data-v-e8a0fba6=""
           href="#"
         >
@@ -32,6 +40,8 @@ exports[`Testing Header Component > 正しくHeaderコンポーネントが表�
         data-v-e8a0fba6=""
       >
         <a
+          class="text-link -secondary"
+          data-v-8475e6b2=""
           data-v-e8a0fba6=""
           href="#"
         >
@@ -42,6 +52,8 @@ exports[`Testing Header Component > 正しくHeaderコンポーネントが表�
         data-v-e8a0fba6=""
       >
         <a
+          class="text-link -secondary"
+          data-v-8475e6b2=""
           data-v-e8a0fba6=""
           href="#"
         >

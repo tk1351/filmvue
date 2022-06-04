@@ -6,11 +6,23 @@ const links = [
   { title: 'BBB', href: '#' },
   { title: 'CCC', href: '#' },
 ]
+
+interface Emits {
+  (eventName: 'click:titleLink', event: Event): void
+}
+const emit = defineEmits<Emits>()
+
+const handleTitleLink = (event: Event) => {
+  event.preventDefault()
+  emit('click:titleLink', event)
+}
 </script>
 
 <template>
   <header class="header">
-    <h1>FilmVue</h1>
+    <h1 class="header__title">
+      <a data-test-id="title-link" @click="handleTitleLink"> FilmVue </a>
+    </h1>
     <nav>
       <ul class="header__list">
         <li v-for="link in links" :key="link.title">
@@ -29,6 +41,12 @@ const links = [
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header__title {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .header__list {
