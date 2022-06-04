@@ -57,9 +57,9 @@ const handleLinkClick = (event: Event, id: number) => {
 }
 
 .movies-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  row-gap: 20px;
+  column-gap: 26px;
 }
 </style>
