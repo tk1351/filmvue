@@ -112,7 +112,7 @@ type CastType = {
   order: number
 }
 
-type CrewType = {
+export type CrewType = {
   adult: boolean
   gender: number | null
   id: number

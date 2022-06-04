@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import PersonCard from '../../atoms/PersonCard/index.vue'
 import { ProviderDetails } from '../../../api/types'
+
+type CastType = { id: number; profile_path: string | null; name: string }
+type CrewType = {
+  name: string
+  profile_path: string | null
+  id: number
+  job: string
+}
 
 withDefaults(
   defineProps<{
@@ -11,6 +20,11 @@ withDefaults(
     overview?: string
     rent?: ProviderDetails[] | undefined
     link?: string | undefined
+    cast?: CastType[]
+    director: CrewType[]
+    writer?: CrewType[]
+    producer?: CrewType[]
+    photographer?: CrewType[]
   }>(),
   {
     original_title: '',
@@ -21,6 +35,11 @@ withDefaults(
     overview: '',
     rent: () => [],
     link: '',
+    cast: () => [],
+    director: () => [],
+    writer: () => [],
+    producer: () => [],
+    photographer: () => [],
   }
 )
 </script>
@@ -63,6 +82,59 @@ withDefaults(
       </div>
     </div>
   </section>
+  <div>
+    <h3>Casts</h3>
+    <ul class="person__list">
+      <li v-for="castData in cast" :key="castData.id">
+        <PersonCard
+          :id="castData.id"
+          :profile_path="castData.profile_path"
+          :name="castData.name"
+        />
+      </li>
+    </ul>
+    <h3>Crews</h3>
+    <ul class="person__list">
+      <li v-for="directorData in director" :key="directorData.id">
+        <PersonCard
+          :id="directorData.id"
+          :profile_path="directorData.profile_path"
+          :name="directorData.name"
+          :department="directorData.job"
+        />
+      </li>
+    </ul>
+    <ul class="person__list">
+      <li v-for="writerData in writer" :key="writerData.id">
+        <PersonCard
+          :id="writerData.id"
+          :profile_path="writerData.profile_path"
+          :name="writerData.name"
+          :department="writerData.job"
+        />
+      </li>
+    </ul>
+    <ul class="person__list">
+      <li v-for="producerData in producer" :key="producerData.id">
+        <PersonCard
+          :id="producerData.id"
+          :profile_path="producerData.profile_path"
+          :name="producerData.name"
+          :department="producerData.job"
+        />
+      </li>
+    </ul>
+    <ul class="person__list">
+      <li v-for="photographerData in photographer" :key="photographerData.id">
+        <PersonCard
+          :id="photographerData.id"
+          :profile_path="photographerData.profile_path"
+          :name="photographerData.name"
+          :department="photographerData.job"
+        />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -109,5 +181,11 @@ withDefaults(
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.person__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  row-gap: 30px;
 }
 </style>

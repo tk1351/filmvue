@@ -1,11 +1,13 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
+    id?: number
     profile_path?: string | null
     name?: string
     department?: string
   }>(),
   {
+    id: 0,
     profile_path: '',
     name: '',
     department: undefined,
@@ -27,7 +29,11 @@ const handleLinkClick = (event: Event) => {
   <section class="person-card">
     <header>
       <a data-test-id="img-link" @click="handleLinkClick">
-        <img class="person-card__img" :src="profile_path" :alt="name" />
+        <img
+          class="person-card__img"
+          :src="`https://image.tmdb.org/t/p/original${profile_path}`"
+          :alt="name"
+        />
       </a>
     </header>
     <div class="person-card__content">
@@ -42,7 +48,7 @@ const handleLinkClick = (event: Event) => {
 <style scoped lang="scss">
 .person-card {
   width: 200px;
-  height: 330px;
+  height: 360px;
   border: 1px solid $main-color;
   border-radius: 30px;
   display: flex;
@@ -51,7 +57,7 @@ const handleLinkClick = (event: Event) => {
 
 .person-card__img {
   width: 100%;
-  height: 220px;
+  height: 250px;
   border-radius: 30px 30px 0 0;
 
   &:hover {

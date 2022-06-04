@@ -2,7 +2,13 @@
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import MovieDetail from './index.vue'
-import { MovieDetailsType, WatchProvidersType } from '../../../api/types'
+import {
+  CrewType,
+  MovieCreditsType,
+  MovieDetailsType,
+  WatchProvidersType,
+} from '../../../api/types'
+import { mapJob } from './type'
 
 const route = useRoute()
 const movieId = Array.isArray(route.params.movieId) ? '' : route.params.movieId
@@ -19,6 +25,12 @@ const { data: providersData } = await axios.get<WatchProvidersType>(
   }`
 )
 
+const { data: creditsData } = await axios.get<MovieCreditsType>(
+  `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${
+    import.meta.env.VITE_API_KEY
+  }&language=en-US`
+)
+
 const {
   original_title,
   vote_average,
@@ -29,6 +41,30 @@ const {
 } = movieData
 
 const { results } = providersData
+
+const { cast, crew } = creditsData
+
+const mappedCast = cast.slice(0, 20).map(({ profile_path, name, id }) => ({
+  id,
+  profile_path,
+  name,
+}))
+
+const director = crew.filter(({ job }) => job === mapJob.director)
+const writer = crew.filter(({ job }) => job === mapJob.writer)
+const producer = crew.filter(({ job }) => job === mapJob.producer)
+const photographer = crew.filter(({ job }) => job === mapJob.photographer)
+
+const crews = [...director, ...writer, ...producer, ...photographer]
+
+const mappedCrew = (crew: CrewType[]) => {
+  return crew.map(({ id, profile_path, name, job }) => ({
+    id,
+    profile_path,
+    name,
+    job,
+  }))
+}
 </script>
 
 <template>
@@ -41,5 +77,7 @@ const { results } = providersData
     :overview="overview"
     :rent="results.JP?.rent"
     :link="results.JP?.link"
+    :cast="mappedCast"
+    :director="mappedCrew(crews)"
   />
 </template>
