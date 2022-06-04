@@ -2,15 +2,21 @@
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import MovieDetail from './index.vue'
-import { MovieDetailsType } from '../../../api/types'
+import { MovieDetailsType, WatchProvidersType } from '../../../api/types'
 
 const route = useRoute()
 const movieId = Array.isArray(route.params.movieId) ? '' : route.params.movieId
 
-const { data } = await axios.get<MovieDetailsType>(
+const { data: movieData } = await axios.get<MovieDetailsType>(
   `https://api.themoviedb.org/3/movie/${movieId}?api_key=${
     import.meta.env.VITE_API_KEY
   }&language=en-US`
+)
+
+const { data: providersData } = await axios.get<WatchProvidersType>(
+  `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${
+    import.meta.env.VITE_API_KEY
+  }`
 )
 
 const {
@@ -20,7 +26,9 @@ const {
   runtime,
   poster_path,
   overview,
-} = data
+} = movieData
+
+const { results } = providersData
 </script>
 
 <template>
@@ -31,5 +39,7 @@ const {
     :runtime="runtime"
     :poster_path="poster_path"
     :overview="overview"
+    :rent="results.JP?.rent"
+    :link="results.JP?.link"
   />
 </template>

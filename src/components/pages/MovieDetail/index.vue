@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ProviderDetails } from '../../../api/types'
+
 withDefaults(
   defineProps<{
     original_title?: string
@@ -7,6 +9,8 @@ withDefaults(
     runtime?: number | null
     poster_path?: string | null
     overview?: string
+    rent?: ProviderDetails[] | undefined
+    link?: string | undefined
   }>(),
   {
     original_title: '',
@@ -15,6 +19,8 @@ withDefaults(
     release_date: '',
     poster_path: '',
     overview: '',
+    rent: () => [],
+    link: '',
   }
 )
 </script>
@@ -40,11 +46,18 @@ withDefaults(
         <p class="movie-detail__description">
           {{ overview }}
         </p>
-        <div class="movie-detail__providers">
-          <strong>Watch Providers</strong>
+        <div v-if="rent.length > 0" class="movie-detail__providers">
+          <strong>Watch Providers by JustWatch</strong>
           <ul class="movie-detail__list">
-            <li>Amazon Prime</li>
-            <li>U-NEXT</li>
+            <li v-for="data in rent" :key="data.provider_id">
+              <a :href="link" target="_blank" rel="noopener">
+                <img
+                  class="provider__img"
+                  :src="`https://image.tmdb.org/t/p/original${data.logo_path}`"
+                  :alt="data.provider_name"
+                />
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -90,5 +103,11 @@ withDefaults(
   display: flex;
   gap: 30px;
   margin-top: 14px;
+}
+
+.provider__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 </style>

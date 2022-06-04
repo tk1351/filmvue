@@ -149,7 +149,7 @@ type PersonDetails = {
   homepage: null | string
 }
 
-type ProviderDetails = {
+export type ProviderDetails = {
   display_priority: number
   logo_path: string
   provider_id: number
