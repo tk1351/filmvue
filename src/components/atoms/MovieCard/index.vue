@@ -47,7 +47,7 @@ const handleLinkClick = (event: Event) => {
 
 <style scoped lang="scss">
 .movie-card {
-  width: 300px;
+  width: 280px;
   height: 450px;
   border: 1px solid $main-color;
   border-radius: 30px;
