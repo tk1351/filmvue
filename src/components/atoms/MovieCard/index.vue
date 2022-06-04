@@ -1,11 +1,13 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
+    id?: number
     poster_path?: string | null
     original_title?: string
     release_date?: string
   }>(),
   {
+    id: 0,
     poster_path: '',
     original_title: '',
     release_date: '',
@@ -13,20 +15,20 @@ withDefaults(
 )
 
 interface Emits {
-  (eventName: 'click:link', event: Event): void
+  (eventName: 'click:link', event: Event, id: number): void
 }
 const emit = defineEmits<Emits>()
 
-const handleLinkClick = (event: Event) => {
+const handleLinkClick = (event: Event, id: number) => {
   event.preventDefault()
-  emit('click:link', event)
+  emit('click:link', event, id)
 }
 </script>
 
 <template>
   <section class="movie-card">
     <header>
-      <a data-test-id="img-link" @click="handleLinkClick">
+      <a data-test-id="img-link" @click="handleLinkClick($event, id)">
         <img
           class="movie-card__img"
           :alt="original_title"
@@ -36,7 +38,7 @@ const handleLinkClick = (event: Event) => {
     </header>
     <div class="movie-card__content">
       <h3 class="movie-card__title">
-        <a data-test-id="title-link" @click="handleLinkClick">{{
+        <a data-test-id="title-link" @click="handleLinkClick($event, id)">{{
           original_title
         }}</a>
       </h3>

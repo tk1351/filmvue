@@ -4,6 +4,7 @@ import MovieCard from '../../atoms/MovieCard/index.vue'
 import Box from '../../atoms/Box/index.vue'
 
 type Movies = {
+  id?: number
   poster_path?: string | null
   original_title?: string
   release_date?: string
@@ -15,7 +16,7 @@ withDefaults(defineProps<{ movies: Movies[] }>(), {
 
 interface Emits {
   (eventName: 'update:modelValue', value: string): void
-  (eventName: 'click:link', event: Event): void
+  (eventName: 'click:link', event: Event, id: number): void
 }
 const emit = defineEmits<Emits>()
 
@@ -23,8 +24,8 @@ const handleInputValue = (value: string) => {
   emit('update:modelValue', value)
 }
 
-const handleLinkClick = (event: Event) => {
-  emit('click:link', event)
+const handleLinkClick = (event: Event, id: number) => {
+  emit('click:link', event, id)
 }
 </script>
 
@@ -39,10 +40,11 @@ const handleLinkClick = (event: Event) => {
         class="movies-list__item"
       >
         <MovieCard
+          :id="movie.id"
           :poster_path="movie.poster_path"
           :original_title="movie.original_title"
           :release_date="movie.release_date"
-          @click:link="handleLinkClick"
+          @click:link="handleLinkClick($event, movie.id)"
         />
       </li>
     </ul>
