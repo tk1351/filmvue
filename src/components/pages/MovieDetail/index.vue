@@ -63,6 +63,7 @@ withDefaults(
   display: flex;
   justify-content: space-between;
   width: 300px;
+  margin-top: 5px;
 }
 
 .movie-detail__content {
