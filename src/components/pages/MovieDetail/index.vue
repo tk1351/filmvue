@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PersonCard from '../../atoms/PersonCard/index.vue'
+import MovieCard from '../../atoms/MovieCard/index.vue'
 import { ProviderDetails } from '../../../api/types'
 
 type CastType = { id: number; profile_path: string | null; name: string }
@@ -8,6 +9,12 @@ type CrewType = {
   profile_path: string | null
   id: number
   job: string
+}
+type Similar = {
+  id?: number
+  poster_path?: string | null
+  original_title?: string
+  release_date?: string
 }
 
 withDefaults(
@@ -21,10 +28,8 @@ withDefaults(
     rent?: ProviderDetails[] | undefined
     link?: string | undefined
     cast?: CastType[]
-    director: CrewType[]
-    writer?: CrewType[]
-    producer?: CrewType[]
-    photographer?: CrewType[]
+    crews: CrewType[]
+    similar?: Similar[]
   }>(),
   {
     original_title: '',
@@ -36,12 +41,19 @@ withDefaults(
     rent: () => [],
     link: '',
     cast: () => [],
-    director: () => [],
-    writer: () => [],
-    producer: () => [],
-    photographer: () => [],
+    crews: () => [],
+    similar: () => [],
   }
 )
+
+interface Emits {
+  (eventName: 'click:link', event: Event, id: number): void
+}
+const emit = defineEmits<Emits>()
+
+const handleLinkClick = (event: Event, id: number) => {
+  emit('click:link', event, id)
+}
 </script>
 
 <template>
@@ -95,42 +107,26 @@ withDefaults(
     </ul>
     <h3>Crews</h3>
     <ul class="person__list">
-      <li v-for="directorData in director" :key="directorData.id">
+      <li v-for="crewsData in crews" :key="crewsData.id">
         <PersonCard
-          :id="directorData.id"
-          :profile_path="directorData.profile_path"
-          :name="directorData.name"
-          :department="directorData.job"
+          :id="crewsData.id"
+          :profile_path="crewsData.profile_path"
+          :name="crewsData.name"
+          :department="crewsData.job"
         />
       </li>
     </ul>
-    <ul class="person__list">
-      <li v-for="writerData in writer" :key="writerData.id">
-        <PersonCard
-          :id="writerData.id"
-          :profile_path="writerData.profile_path"
-          :name="writerData.name"
-          :department="writerData.job"
-        />
-      </li>
-    </ul>
-    <ul class="person__list">
-      <li v-for="producerData in producer" :key="producerData.id">
-        <PersonCard
-          :id="producerData.id"
-          :profile_path="producerData.profile_path"
-          :name="producerData.name"
-          :department="producerData.job"
-        />
-      </li>
-    </ul>
-    <ul class="person__list">
-      <li v-for="photographerData in photographer" :key="photographerData.id">
-        <PersonCard
-          :id="photographerData.id"
-          :profile_path="photographerData.profile_path"
-          :name="photographerData.name"
-          :department="photographerData.job"
+  </div>
+  <div>
+    <h3>Similar Movies</h3>
+    <ul class="similar__list">
+      <li v-for="similarData in similar" :key="similarData.id">
+        <MovieCard
+          :id="similarData.id"
+          :poster_path="similarData.poster_path"
+          :original_title="similarData.original_title"
+          :release_date="similarData.release_date"
+          @click:link="handleLinkClick($event, similarData.id)"
         />
       </li>
     </ul>
@@ -187,5 +183,12 @@ withDefaults(
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   row-gap: 30px;
+}
+
+.similar__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  row-gap: 20px;
+  column-gap: 26px;
 }
 </style>
